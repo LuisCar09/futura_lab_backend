@@ -7,13 +7,20 @@ import User from './models/User.js'
 const app = express()
 const PORT = process.env.PORT
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
 app.get('/',(req,res) => {
     res.send('<h1>Server On</h1>')
 })
-app.post('/createUser',(req,res)=>{
+app.post('/createuser',async(req,res)=>{
     const data = req.body
-    console.log(data);
-    res.status(201).json({success:"User Create Sucessfully"})
+    try {
+        await User.create(data)
+        res.status(201).json({success:"User Create Sucessfully"})
+    } catch (error) {
+        res.status(500).json({message:'Error creating user'})
+    }
     
 })
 app.listen(PORT,()=> {
