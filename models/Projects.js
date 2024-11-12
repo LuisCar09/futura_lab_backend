@@ -1,4 +1,3 @@
-import { application } from "express";
 import mongoose from "mongoose";
 
 const ProjectsSchema = new mongoose.Schema({
@@ -84,7 +83,7 @@ const ProjectsSchema = new mongoose.Schema({
         type: String,
         trim:true,
         required: true,
-        enum: ['DirectSunLigth', 'PartlyShadedSunLigth', 'AmbientOverheadLigthing' ]
+        enum: ['DirectSunLigth', 'PartlyShadedSunLigth', 'AmbientOverheadLigthing']
     },
     Tools: {
         type: [String],
@@ -132,6 +131,6 @@ const ProjectsSchema = new mongoose.Schema({
 
 },{timestamps:true})
 
-const Projects = mongoose.model(/*'UserDB',*/ProjectsSchema)
+const Projects = mongoose.model('ProjectsDB',ProjectsSchema)
 
 export default Projects
