@@ -37,7 +37,7 @@ const ProjectsSchema = new mongoose.Schema({
         required: true,
         enum: [
         'CreativeCommons:Attribution-NoDerivates4.0Internacional(CCBY-ND4.0)',
-        'CreatvieCommons:Attribution-ShareAlike4.0Internacional(CCBY-SA4.0)',
+        'CreativeCommons:Attribution-ShareAlike4.0Internacional(CCBY-SA4.0)',
         'CreativeCommons:Attribution-NonCommercial4.0Internacional(CCBY-NC4.0)',
         'CreativeCommons:Attribution-NonCommercial-NoDerivates4.0 Internacional(CCBY-NC-ND4.0)', 
         'CreativeCommons:Attribution-NonCommercial-ShareAlike4.0Internacional(CCBY-NC-SA4.0)',

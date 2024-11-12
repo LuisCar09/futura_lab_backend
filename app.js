@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import dbConnection from './config/db.js'
 dotenv.config()
 import User from './models/User.js'
+import projectsRoutes from './routes/projectsRoutes.js'
+
 
 const app = express()
 const PORT = process.env.PORT
@@ -10,7 +12,11 @@ const PORT = process.env.PORT
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.get('/',(req,res) => {
+dbConnection()
+
+app.use('/', projectsRoutes)
+
+/*app.get('/',(req,res) => {
     res.send('<h1>Server On</h1>')
 })
 app.get('/createuser', async(req,res)=>{
@@ -27,9 +33,13 @@ app.post('/createuser',async(req,res)=>{
         res.status(500).json({message:'Error creating user'})
     }
     
-})
+})*/
+
+
+/*projects Routes */
+
+
 app.listen(PORT,()=> {
     console.log(`Server listening on http://localhost:${PORT}/`)
 })
 
-dbConnection()
