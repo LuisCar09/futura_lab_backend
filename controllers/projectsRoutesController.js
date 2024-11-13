@@ -30,6 +30,7 @@ const ProjectsControllers = {
     
     },
     getProjectById : async(req,res) => {
+        
         try {
             const id = req.params.projectId
             const project = await Projects.findById(id)
@@ -71,6 +72,25 @@ const ProjectsControllers = {
             console.error(error);
             res.status(500).json({ message: 'Error deleting project' })
         }
+    },
+    getProjectByTitle: async(req,res) => {
+        const projectTitle = req.params.name
+        console.log(projectTitle);
+        
+        
+        try {
+            // const results = await Projects.find({name:{$regex:"printer", $options:'i'}})
+           
+            
+            const results = await Projects.find({ nameproject: { $regex: projectTitle, $options: "i" } })
+
+           res.status(200).json(results)
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching project' })
+        }
+        res.send('LUISKITO')
     }
 
 }

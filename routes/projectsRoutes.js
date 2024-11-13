@@ -13,6 +13,7 @@ router.put('/:projectId', ProjectsControllers.updateProjectById),
 
 router.delete('/:projectId', ProjectsControllers.deleteProjectById)
 
+router.get('/title/:name',ProjectsControllers.getProjectByTitle) //esta ruta sera para el buscador de projectos por coincidencia en el nombre del titulo.
 
 
 export default router
