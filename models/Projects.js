@@ -124,6 +124,13 @@ const ProjectsSchema = new mongoose.Schema({
             },
             message: 'Video must be a valid URL in formats: .mp4, .webm, .ogg, .mov, .avi, .flv, .wmv'
         }
+    },
+    views:{
+        type: [String],
+  
+    },
+    comments: {
+        type: [String]
     }
 
 },{timestamps:true})
