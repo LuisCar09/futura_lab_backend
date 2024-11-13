@@ -2,6 +2,7 @@ import express from 'express';
 const router= express.Router()
 import Projects from '../models/Projects.js';
 
+
 router.get('/projects', async(req,res) => {
     try {
         const projects = await Projects.find()
@@ -75,5 +76,7 @@ router.delete('/projects/:projectId', async(req,res) => {
         res.status(500).json({ message: 'Error deleting project' })
     }
 })
+
+
 
 export default router

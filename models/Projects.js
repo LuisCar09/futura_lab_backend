@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
 
 const ProjectsSchema = new mongoose.Schema({
-    nameProject: {
+    NameProject: {
         type: String,
         trim: true,
         required: true
     },
 
-    description: {
+    Description: {
         type: String,
         trim:true,
         required: true,
-        validated:{
+        validate:{
             validator: (v) =>{
                 return v.length >=15 && v.length <= 5000
             },
@@ -106,7 +106,7 @@ const ProjectsSchema = new mongoose.Schema({
     trim:true,
     required:true
    },
-   image : {
+   Image : {
     type : String,
     required : true,
     validate:{
@@ -117,7 +117,7 @@ const ProjectsSchema = new mongoose.Schema({
         message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
     }
     },
-    video: {
+    Video: {
         type: String,
         required: true,
         validate: {
