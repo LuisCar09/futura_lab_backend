@@ -26,7 +26,7 @@ const ProjectsSchema = new mongoose.Schema({
     
     },
     Contributors: {
-        type: String,
+        type: [String],
         trim: true,
         required: true
 
@@ -62,18 +62,18 @@ const ProjectsSchema = new mongoose.Schema({
         enum:['ConsumerGoods','Fabrics','Packaging','Construction&BuiltEnviroment','ProductDesign']
     },
     Ingredients: {
-        type:String,
+        type:[String],
         trim: true,
         required: true
     },
-    Properties: {//que se puedan elegir mas de una//
+    Properties: {
         type:[String],
         trim: true,
         required: true,
         enum: ['ThermalProperties', 'PhysicalProperties', 'MechanicalProperties-Tension', 'MechanicalProperties-Strength', 'Chemical-Properties', 'Optical-Properties', 'Barrier-Properties', 'Biocompatibility', 'Biodegradability', 'Surface-Properties', 'Porosity', 'Electrical-properties', 'Thermal-Stability', 'Antimicrobial-Properties','Viscoelastic-Properties']
     },
     AmbientConditions: {
-        type: String, //para cº o fº
+        type: String, 
         trim:true,
         required: true
 
@@ -89,14 +89,12 @@ const ProjectsSchema = new mongoose.Schema({
         type: [String],
         trim:true,
         required: true,
-        //se tendra que seleccionar mas de uno( mirar maxlengt y minlength como validadores)
         enum: ['Cooker/stove/hotplates', 'Teaspoon', 'MeasuringCup', 'CookingPot', 'Scale', 'Thermometer', 'Oven', 'MicronSieve', 'PressureCooker', 'Gloves', 'PlasticFillm','SprayBottle', 'CanningJar', 'Mold', 'Blender', 'Brush', 'Ruler', 'LasserCutter', 'MeasuringCylinder', 'Syringe', 'Pippete', 'Filter', 'Sponge', 'PaperMould', 'SiliconeMat', '3DPrinter', 'MetalScreenMesh', 'Drainer','Mixer','CentrifugalMixer','DustMask', 'PetriDish', 'strainer','ContainerWithLid', 'Scissors', 'MortarAndPestle', 'FabricCloth', 'PuttyKnife', 'Degasser', 'Homogenizer', 'KitchenTools', 'Scooby']
     },
    Processes: {
     type: [String],
     trim:true,
     required: true,
-    //se tendra que seleccionar mas de uno( mirar maxlengt y minlength como validadores)
     enum: ['3Dprinted', 'LaserCut' ,'Ground', 'Molded', 'Cast', 'Cooked',
         'Cut','Baked','Mixed', 'AirDried', 'Freeze-dried', 'Frozen', 'Growm', 'Fermented', 'Boiled', 'Fired', 'Kneaded', 'Decant','OvenDry', 'Crushed', 'Sieved', 'Rinsed', 'Soaked', 'Sprayed', 'Dry',
         'Mix', 'Warm', 'Grated', 'Heated', 'Dyed', 'Painted', 'Extruded', 'Strained', 'Blended', 'Peeled', 'Pressed']
@@ -107,22 +105,22 @@ const ProjectsSchema = new mongoose.Schema({
     required:true
    },
    Image : {
-    type : String,
+    type : [String],
     required : true,
     validate:{
         validator: function(v) {
-            const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i //regrex to validate image url
+            const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i 
             return imagePattern.test(v)
         },
         message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
     }
     },
     Video: {
-        type: String,
+        type: [String],
         required: true,
         validate: {
             validator: function(v) {
-                const videoPattern = /^(https?:\/\/.*\.(?:mp4|webm|ogg|mov|avi|flv|wmv))$/i; // regex to validate video URL
+                const videoPattern = /^(https?:\/\/.*\.(?:mp4|webm|ogg|mov|avi|flv|wmv))$/i; 
                 return videoPattern.test(v);
             },
             message: 'Video must be a valid URL in formats: .mp4, .webm, .ogg, .mov, .avi, .flv, .wmv'
