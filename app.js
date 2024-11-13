@@ -14,29 +14,9 @@ app.use(express.urlencoded({extended:true}));
 
 dbConnection()
 
-app.use('/', projectsRoutes)
-
-/*app.get('/',(req,res) => {
-    res.send('<h1>Server On</h1>')
-})
-app.get('/createuser', async(req,res)=>{
-    res.send('<h1>create user</h1>')
-})
-
-app.post('/createuser',async(req,res)=>{
-    const data = req.body
-    try {
-        await User.create(data)
-        res.status(201).json({success:"User Create Sucessfully"})
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({message:'Error creating user'})
-    }
-    
-})*/
+app.use('/projects', projectsRoutes)
 
 
-/*projects Routes */
 
 
 app.listen(PORT,()=> {

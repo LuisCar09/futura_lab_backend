@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
 const ProjectsSchema = new mongoose.Schema({
-    NameProject: {
+    nameproject: {
         type: String,
         trim: true,
         required: true
     },
 
-    Description: {
+    description: {
         type: String,
         trim:true,
         required: true,
@@ -19,19 +19,19 @@ const ProjectsSchema = new mongoose.Schema({
         }
     },
 
-    Composition: {
+    composition: {
         type: String,
         trim: true,
         required: true
     
     },
-    Contributors: {
+    contributors: {
         type: [String],
         trim: true,
         required: true
 
     },
-    License: {
+    license: {
         type: [String],
         trim: true,
         required: true,
@@ -45,12 +45,12 @@ const ProjectsSchema = new mongoose.Schema({
         ]
     },
 
-    References: {
+    references: {
         type:String,
         trim: true,
         required: true,
     },
-    Bibliography: {
+    bibliography: {
         type:String,
         trim: true,
     },
@@ -61,37 +61,37 @@ const ProjectsSchema = new mongoose.Schema({
         required: true,
         enum:['ConsumerGoods','Fabrics','Packaging','Construction&BuiltEnviroment','ProductDesign']
     },
-    Ingredients: {
+    ingredients: {
         type:[String],
         trim: true,
         required: true
     },
-    Properties: {
+    properties: {
         type:[String],
         trim: true,
         required: true,
         enum: ['ThermalProperties', 'PhysicalProperties', 'MechanicalProperties-Tension', 'MechanicalProperties-Strength', 'Chemical-Properties', 'Optical-Properties', 'Barrier-Properties', 'Biocompatibility', 'Biodegradability', 'Surface-Properties', 'Porosity', 'Electrical-properties', 'Thermal-Stability', 'Antimicrobial-Properties','Viscoelastic-Properties']
     },
-    AmbientConditions: {
+    ambientconditions: {
         type: String, 
         trim:true,
         required: true
 
     },
 
-    LigthsConditions: {
+    lightsconditions: {
         type: String,
         trim:true,
         required: true,
         enum: ['DirectSunLigth', 'PartlyShadedSunLigth', 'AmbientOverheadLigthing']
     },
-    Tools: {
+    tools: {
         type: [String],
         trim:true,
         required: true,
         enum: ['Cooker/stove/hotplates', 'Teaspoon', 'MeasuringCup', 'CookingPot', 'Scale', 'Thermometer', 'Oven', 'MicronSieve', 'PressureCooker', 'Gloves', 'PlasticFillm','SprayBottle', 'CanningJar', 'Mold', 'Blender', 'Brush', 'Ruler', 'LasserCutter', 'MeasuringCylinder', 'Syringe', 'Pippete', 'Filter', 'Sponge', 'PaperMould', 'SiliconeMat', '3DPrinter', 'MetalScreenMesh', 'Drainer','Mixer','CentrifugalMixer','DustMask', 'PetriDish', 'strainer','ContainerWithLid', 'Scissors', 'MortarAndPestle', 'FabricCloth', 'PuttyKnife', 'Degasser', 'Homogenizer', 'KitchenTools', 'Scooby']
     },
-   Processes: {
+   processes: {
     type: [String],
     trim:true,
     required: true,
@@ -99,12 +99,12 @@ const ProjectsSchema = new mongoose.Schema({
         'Cut','Baked','Mixed', 'AirDried', 'Freeze-dried', 'Frozen', 'Growm', 'Fermented', 'Boiled', 'Fired', 'Kneaded', 'Decant','OvenDry', 'Crushed', 'Sieved', 'Rinsed', 'Soaked', 'Sprayed', 'Dry',
         'Mix', 'Warm', 'Grated', 'Heated', 'Dyed', 'Painted', 'Extruded', 'Strained', 'Blended', 'Peeled', 'Pressed']
    },
-   PrepTime: {
+   preptime: {
     type: String,
     trim:true,
     required:true
    },
-   Image : {
+   image : {
     type : [String],
     required : true,
     validate:{
@@ -115,9 +115,8 @@ const ProjectsSchema = new mongoose.Schema({
         message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
     }
     },
-    Video: {
+    video: {
         type: [String],
-        required: true,
         validate: {
             validator: function(v) {
                 const videoPattern = /^(https?:\/\/.*\.(?:mp4|webm|ogg|mov|avi|flv|wmv))$/i; 
