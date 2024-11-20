@@ -1,8 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import dbConnection from './config/db.js'
+import cors from 'cors'
 dotenv.config()
-import User from './models/User.js'
 import projectsRoutes from './routes/projectsRoutes.js'
 
 
@@ -11,7 +11,7 @@ const PORT = process.env.PORT
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+app.use(cors())
 dbConnection()
 
 app.use('/projects', projectsRoutes)
