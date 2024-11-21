@@ -16,8 +16,9 @@ const UserSchema = new mongoose.Schema({
         required : true,
         validate:{
             validator: function(v) {
-                const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i //regrex to validate image url
-                return imagePattern.test(v)
+                const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i 
+                const imagenPatternTwo = /^https:\/\/api\.dicebear\.com\/9\.x\/initials\/svg\?seed=[a-zA-Z0-9-_]+$/;
+                return imagePattern.test(v) || imagenPatternTwo.test(v)
             },
             message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
         }
@@ -67,10 +68,7 @@ const UserSchema = new mongoose.Schema({
         trim:true
     },
     preferences:{
-        type:String,
-        enum:{
-            values:["seaweed",],
-        },
+        type:[String],
         trim:true
     },
     description:{

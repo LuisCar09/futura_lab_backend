@@ -4,7 +4,7 @@ import dbConnection from './config/db.js'
 import cors from 'cors'
 dotenv.config()
 import projectsRoutes from './routes/projectsRoutes.js'
-
+import authUser from './routes/authUser.js'
 
 const app = express()
 const PORT = process.env.PORT
@@ -15,7 +15,7 @@ app.use(cors())
 dbConnection()
 
 app.use('/projects', projectsRoutes)
-
+app.use('/users',authUser)
 
 
 
