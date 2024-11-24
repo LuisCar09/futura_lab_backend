@@ -48,7 +48,8 @@ const UserSchema = new mongoose.Schema({
     projects:{
         type:[String],
         required:true,
-        trim:true
+        trim:true,
+        timestamp: { type: Date, default: Date.now }
     },
     likes:{
         type:[String],

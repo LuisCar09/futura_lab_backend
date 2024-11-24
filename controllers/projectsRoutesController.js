@@ -15,12 +15,15 @@ const ProjectsControllers = {
     },
     createProject: async(req,res) => {
     
-        const { nameproject, description, composition, contributors, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, video } = req.body;
-    
+        const { nameproject, description, composition, contributors, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, video,owner } = req.body;
+        
+        
         try {
             const newProject = new Projects(
-                { nameproject, description, composition, contributors, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, video }
+                { nameproject,owner ,description, composition, contributors, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, video }
             )
+           
+            
             const saveProject = await newProject.save()
             res.status(201).json(saveProject)
         } catch (error) {

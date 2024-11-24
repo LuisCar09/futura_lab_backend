@@ -6,6 +6,10 @@ const ProjectsSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
+    owner:{
+        type:String,
+        required:true
+    },
 
     description: {
         type: String,
