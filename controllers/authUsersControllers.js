@@ -15,6 +15,23 @@ const prueba = {
     "offers": ["Oferta A", "Oferta B"]
 }
 const authUsersControllers = {
+    getAllUser: async (req,res) =>{
+        try {
+            const users = await User.find()
+            res.json(users)
+        } catch (error) {
+            console.error(error.message)
+        }
+    },getUser: async (req,res) =>{
+        try {
+            const userId = req.params.id
+            
+            const user = await User.findById(userId)
+            res.status(200).json(user)
+        } catch (error) {
+            console.error(error.message)
+        }
+    },
     createUser : async (req,res) => {
         try {
             const usersDetails = req.body
@@ -29,7 +46,8 @@ const authUsersControllers = {
             
         }
 
-    }
+    },
+    
 }
 
 export default authUsersControllers
