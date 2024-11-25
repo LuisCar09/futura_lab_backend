@@ -31,6 +31,15 @@ const authUsersControllers = {
             console.error(error.message)
         }
     },
+    getUserByName: async (req,res) =>{
+        try {
+            const {username} = req.params        
+            const user = await User.findOne({userName:username.toLowerCase()})
+            res.status(200).json(user)
+        } catch (error) {
+            console.error(error.message)
+        }
+    },
     createUser : async (req,res) => {
         try {
             const usersDetails = req.body

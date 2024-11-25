@@ -4,6 +4,7 @@ const router= express.Router()
 
 router.get('/',authUsersControllers.getAllUser)
 router.get('/:id',authUsersControllers.getUser)
+router.get('/username/:username',authUsersControllers.getUserByName)
 router.post('/newuser',authUsersControllers.createUser)
 
 export default router
