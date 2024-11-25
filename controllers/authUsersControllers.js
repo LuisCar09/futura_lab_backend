@@ -25,7 +25,6 @@ const authUsersControllers = {
     },getUser: async (req,res) =>{
         try {
             const userId = req.params.id
-            
             const user = await User.findById(userId)
             res.status(200).json(user)
         } catch (error) {
