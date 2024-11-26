@@ -1,3 +1,4 @@
+
 import User from "../models/User.js"
 const prueba = {
     "name": "Juan",
@@ -55,6 +56,41 @@ const authUsersControllers = {
         }
 
     },
+    updateUser: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const body = req.body;
+            console.log(body)
+    
+            const user = await User.findByIdAndUpdate(id, body, { new: true });
+    
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+    
+            res.status(200).json({ message: 'User updated successfully', user });
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'An error occurred',error });
+        }
+    },
+
+    deleteUser: async(req,res) => {
+        const id = req.params.id
+        try {
+            const user = await User.findById(id)
+            if(!user){
+                return res.status(404).json({message: 'user not found'})
+            }
+            await User.findByIdAndDelete(id)
+            res.status(200).json({message: 'User deleted succesfully'})
+            
+        } catch (error) {
+            console.error(error)
+            res.status(500).json({ message: 'Error deleting user' })
+        }
+    }
     
 }
 
