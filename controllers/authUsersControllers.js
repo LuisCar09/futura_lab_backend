@@ -60,12 +60,13 @@ const authUsersControllers = {
         try {
             const id = req.params.id;
             const body = req.body;
-            console.log(body)
-    
+            
+            
             const user = await User.findByIdAndUpdate(id, body, { new: true });
-    
-            if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+            console.log(user);
+            
+             if (!user) {
+                 return res.status(404).json({ message: 'User not found' });
             }
     
             res.status(200).json({ message: 'User updated successfully', user });
