@@ -5,7 +5,7 @@ import cors from 'cors'
 dotenv.config()
 import projectsRoutes from './routes/projectsRoutes.js'
 import authUser from './routes/authUser.js'
-
+import services from './routes/services.js'
 const app = express()
 const PORT = process.env.PORT
 
@@ -16,6 +16,7 @@ dbConnection()
 
 app.use('/projects', projectsRoutes)
 app.use('/users',authUser)
+app.use('/services',services)
 app.use((req,res)=>{
     res.status(404).json({message:'End point does not exist'})
 })
