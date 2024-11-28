@@ -3,7 +3,8 @@ import admin from "firebase-admin";
 const verifyToken = async(req,res,next) => {
     const authHeader = req.headers.authorization
     const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.split('Bearer ').join('') : null
-
+    
+    
     if (!token) return res.status(403).send("Token required")
 
     try {

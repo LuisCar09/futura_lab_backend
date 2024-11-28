@@ -26,7 +26,11 @@ const authUsersControllers = {
     },getUser: async (req,res) =>{
         try {
             const userId = req.params.uid
-            const user = await User.findById(userId)
+           
+            
+            const user = await User.find({uid:userId})
+            
+            
             res.status(200).json(user)
         } catch (error) {
             console.error(error.message)
@@ -54,7 +58,7 @@ const authUsersControllers = {
                 const itHasUserImage = !usersDetails.image ? `https://api.dicebear.com/9.x/initials/svg?seed=${usersDetails.name[0]}` : usersDetails.image 
                 const userData = {...usersDetails,image:itHasUserImage}
                 const userCreated = await User.create(userData) 
-                console.log(userCreated._id);
+                
             
                 res.status(201).json({success: 'User created successfully',id:userCreated._id})
             }else{
