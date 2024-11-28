@@ -47,18 +47,15 @@ const UserSchema = new mongoose.Schema({
     },
     address:{
         type:String,
-        required:true,
         trim:true
     },
     projects:{
         type:[String],
-        required:true,
         trim:true,
         timestamp: { type: Date, default: Date.now }
     },
     likes:{
         type:[String],
-        required:true,
         trim:true
     },
     followers:{
@@ -79,7 +76,6 @@ const UserSchema = new mongoose.Schema({
     },
     description:{
         type:String,
-        required:true,
         validated:{
             validator: (v) =>{
                 return v.length >=15 && v.length <= 300
@@ -89,12 +85,17 @@ const UserSchema = new mongoose.Schema({
     },
     offers:{
         type:[String],
-        required:true
+        
     },
     uid:{
         type:String,
         required: true,
         trim:true 
+    },
+    password:{
+        type:String,
+        require:true,
+        trim: true
     }
 
 
