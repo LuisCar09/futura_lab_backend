@@ -3,7 +3,7 @@ import authUsersControllers from '../controllers/authUsersControllers.js';
 const router= express.Router()
 
 router.get('/',authUsersControllers.getAllUser)
-router.get('/:id',authUsersControllers.getUser)
+router.get('/:uid',authUsersControllers.getUser)
 router.get('/username/:username',authUsersControllers.getUserByName)
 router.post('/newuser',authUsersControllers.createUser)
 router.put('/:id',authUsersControllers.updateUser)

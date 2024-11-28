@@ -90,6 +90,11 @@ const UserSchema = new mongoose.Schema({
     offers:{
         type:[String],
         required:true
+    },
+    uid:{
+        type:String,
+        required: true,
+        trim:true 
     }
 
 
