@@ -46,13 +46,21 @@ const authUsersControllers = {
     },
     createUser : async (req,res) => {
         try {
-            const usersDetails = req.body
-            const itHasUserImage = !usersDetails.image ? `https://api.dicebear.com/9.x/initials/svg?seed=${usersDetails.name[0]}` : usersDetails.image 
-            const userData = {...usersDetails,image:itHasUserImage}
-            const userCreated = await User.create(userData) 
-            console.log(userCreated._id);
             
-            res.status(201).json({success: 'User created successfully',id:userCreated._id})
+            
+            const usersDetails = req.body
+            const existUserUid = await User.findOne({uid:usersDetails.uid}) 
+            if (!existUserUid) {
+                const itHasUserImage = !usersDetails.image ? `https://api.dicebear.com/9.x/initials/svg?seed=${usersDetails.name[0]}` : usersDetails.image 
+                const userData = {...usersDetails,image:itHasUserImage}
+                const userCreated = await User.create(userData) 
+                console.log(userCreated._id);
+            
+                res.status(201).json({success: 'User created successfully',id:userCreated._id})
+            }else{
+                res.status(401).json({error: 'User already exists'})
+            }
+            
         } catch (error) {
             console.log(error.message);
             

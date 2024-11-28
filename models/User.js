@@ -39,10 +39,10 @@ const UserSchema = new mongoose.Schema({
         trim:true,
         validate:{
             validator: (v) => {
-                const regrexBird = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/
+                const regrexBird = /^\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])$/
                 return regrexBird.test(v)
             },
-            message: 'Date format equal to YYYY-MM-DD'
+            message: 'Date format equal to YYYY/MM/DD'
         }
     },
     address:{
