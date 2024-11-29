@@ -7,7 +7,7 @@ router.get('/',authUsersControllers.getAllUser)
 router.get('/:uid',verifyToken,authUsersControllers.getUser)
 router.get('/username/:username',authUsersControllers.getUserByName)
 router.post('/newuser',authUsersControllers.createUser)
-router.put('/:id',authUsersControllers.updateUser)
+router.put('/:id',verifyToken,authUsersControllers.updateUser)
 router.delete('/:id',authUsersControllers.deleteUser)
 
 export default router

@@ -23,7 +23,8 @@ const authUsersControllers = {
         } catch (error) {
             console.error(error.message)
         }
-    },getUser: async (req,res) =>{
+    },
+    getUser: async (req,res) =>{
         try {
             const userId = req.params.uid
            
@@ -74,7 +75,11 @@ const authUsersControllers = {
     updateUser: async (req, res) => {
         try {
             const id = req.params.id;
+            
+            
             const body = req.body;
+            console.log(req.headers.authorization);
+            console.log(id);
             
             
             const user = await User.findByIdAndUpdate(id, body, { new: true });
