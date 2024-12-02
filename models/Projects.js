@@ -71,7 +71,7 @@ const ProjectsSchema = new mongoose.Schema({
     },
 
     lightsconditions: {
-        type: String,
+        type: [String],
         trim:true,
         required: true,
         enum: ['DirectSunLigth', 'PartlyShadedSunLigth', 'AmbientOverheadLigthing']
