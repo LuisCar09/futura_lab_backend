@@ -15,12 +15,13 @@ const ProjectsControllers = {
     },
     createProject: async(req,res) => {
     
-        const { nameproject, description, composition, contributors, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, video,owner } = req.body;
+        const { nameproject,owner ,description, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image,uid,method} = req.body;
+        
         
         
         try {
             const newProject = new Projects(
-                { nameproject,owner ,description, composition, contributors, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, video }
+                { nameproject,owner ,description, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image,uid,method }
             )
            
             

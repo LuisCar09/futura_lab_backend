@@ -22,19 +22,6 @@ const ProjectsSchema = new mongoose.Schema({
             message: 'Description must have betwwen 15 and 5000 characteres'
         }
     },
-
-    composition: {
-        type: String,
-        trim: true,
-        required: true
-    
-    },
-    contributors: {
-        type: [String],
-        trim: true,
-        required: true
-
-    },
     license: {
         type: [String],
         trim: true,
@@ -60,10 +47,10 @@ const ProjectsSchema = new mongoose.Schema({
     },
 
     application: {
-        type:String,
+        type:[String],
         trim: true,
         required: true,
-        enum:['ConsumerGoods','Fabrics','Packaging','Construction&BuiltEnviroment','ProductDesign']
+        enum:['ConsumerGoods', 'Fabrics', 'Packaging', 'Construction&BuiltEnviroment', 'ProductDesign']
     },
     ingredients: {
         type:[String],
@@ -111,23 +98,13 @@ const ProjectsSchema = new mongoose.Schema({
    image : {
     type : [String],
     required : true,
-    validate:{
-        validator: function(v) {
-            const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i 
-            return imagePattern.test(v)
-        },
-        message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
-    }
-    },
-    video: {
-        type: [String],
-        validate: {
-            validator: function(v) {
-                const videoPattern = /^(https?:\/\/.*\.(?:mp4|webm|ogg|mov|avi|flv|wmv))$/i; 
-                return videoPattern.test(v);
-            },
-            message: 'Video must be a valid URL in formats: .mp4, .webm, .ogg, .mov, .avi, .flv, .wmv'
-        }
+    // validate:{
+    //     validator: function(v) {
+    //         const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i 
+    //         return imagePattern.test(v)
+    //     },
+    //     message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
+    //}
     },
     views:{
         type: [String],
@@ -135,6 +112,15 @@ const ProjectsSchema = new mongoose.Schema({
     },
     comments: {
         type: [String]
+    },
+    method:{
+        type:String,
+        trim:true
+    },
+    uid:{
+        type : String,
+        trim : true,
+        required : true
     }
 
 },{timestamps:true})
