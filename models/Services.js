@@ -28,7 +28,11 @@ const ServicesSchema = new mongoose.Schema({
     location: {
         type: String,
         required: true,
-      }
+      },
+    uid:{
+      type:String,
+      required: true
+    }
 },{timestamps:true})
 const Services = mongoose.model('ServicesDB',ServicesSchema)
 
