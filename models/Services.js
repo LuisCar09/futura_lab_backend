@@ -32,7 +32,27 @@ const ServicesSchema = new mongoose.Schema({
     uid:{
       type:String,
       required: true
+    },
+    image : {
+    type : [String],
+    required : true,
+    // validate:{
+    //     validator: function(v) {
+    //         const imagePattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i 
+    //         return imagePattern.test(v)
+    //     },
+    //     message:'Image must be a URL valid or a format ,.png, .jpeg, .jpg, .gif, .webp'
+    //}
+    },
+    stock:{
+      type:Number,
+      required:true
+    },
+    hour:{
+      type:String,
+      required:true
     }
+
 },{timestamps:true})
 const Services = mongoose.model('ServicesDB',ServicesSchema)
 

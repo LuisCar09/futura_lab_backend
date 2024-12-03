@@ -10,12 +10,14 @@ const ServicesControllers = {
         }
     },
     createService: async (req, res) => {
-        const { name, email, username,description, duration, price, location } = req.body;
-        if (!name || !email || !duration || !price || !location || !username ||!description) {
+        const { name, email, username,description, duration, price, location,uid,image,stock } = req.body;
+        if (!name || !email || !duration || !price || !location || !username ||!description || !uid || !image || !stock) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
+        
+        
         try {
-            const newService = new Services({ name, email, username, description, duration, price, location });
+            const newService = new Services({ name, email, username, description, duration, price, location,uid,image,stock });
             await newService.save();
             res.status(201).json(newService);
         } catch (error) {
@@ -24,8 +26,12 @@ const ServicesControllers = {
         }
     },
     getServiceById: async (req, res) => {
+        
+        
         try {
             const service = await Services.findById(req.params.id);
+            
+            
             if (!service) return res.status(404).json({ message: 'Service not found' });
             res.status(200).json(service);
         } catch (error) {
