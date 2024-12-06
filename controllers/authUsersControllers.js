@@ -25,14 +25,19 @@ const authUsersControllers = {
         }
     },
     getUser: async (req,res) =>{
+        
+       
+        
         try {
             const userId = req.params.uid
-           
             
-            const user = await User.find({uid:userId})
+            const findUser = !req.originalUrl.split('/').includes('members') ?  await User.find({uid:req.params.uid})  : await User.find({_id:req.params.id})  
             
             
-            res.status(200).json(user)
+            // const user = await User.find({uid:userId})
+            
+            
+            res.status(200).json(findUser)
         } catch (error) {
             console.error(error.message)
         }

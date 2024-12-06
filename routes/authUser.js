@@ -4,6 +4,7 @@ import verifyToken from '../middlewares/authMiddleware.js'
 const router= express.Router()
 
 router.get('/',authUsersControllers.getAllUser)
+router.get('/members/profile/:id',verifyToken,authUsersControllers.getUser)
 router.get('/:uid',verifyToken,authUsersControllers.getUser)
 router.get('/username/:username',authUsersControllers.getUserByName)
 router.post('/newuser',authUsersControllers.createUser)
