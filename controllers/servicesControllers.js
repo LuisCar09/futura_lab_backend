@@ -10,14 +10,15 @@ const ServicesControllers = {
         }
     },
     createService: async (req, res) => {
-        const { name, email, username,description, duration, price, location,uid,image,stock } = req.body;
-        if (!name || !email || !duration || !price || !location || !username ||!description || !uid || !image || !stock) {
+        const { name, email, username,description, duration, price, location,uid,image,stock,date,hour } = req.body;
+        console.log(req.body);
+        if (!name || !email || !duration || !price || !location || !username ||!description || !uid || !image || !stock || !date || !hour) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
         
         
         try {
-            const newService = new Services({ name, email, username, description, duration, price, location,uid,image,stock });
+            const newService = new Services({ name, email, username, description, duration, price, location,uid,image,stock,date,hour });
             await newService.save();
             res.status(201).json(newService);
         } catch (error) {
@@ -62,6 +63,29 @@ const ServicesControllers = {
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Error deleting service', error: error.message });
+        }
+    },
+    getServiceByUid : async(req,res) => {
+        console.log('KYUDASDAS');
+        
+        
+        try {
+            const uid = req.params.uid
+            
+            
+            const service = await Services.find({uid})
+            console.log(service);
+            
+             
+            if(!service)
+                return res.status(404).json({message: 'Project not found'})
+            
+            
+            res.status(200).json(service)
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching project' })
         }
     }
 };

@@ -34,14 +34,16 @@ const ProjectsControllers = {
     
     },
     getProjectById : async(req,res) => {
-        console.log('primero log');
+        
         
         try {
+            
             const id = req.params.projectId
+            
             const project = await Projects.findById(id)
             if(!project)
                 return res.status(404).json({message: 'Project not found'})
-            console.log('SOLICITADO');
+            
             
             res.status(200).json(project)
             
@@ -98,6 +100,27 @@ const ProjectsControllers = {
             res.status(500).json({ message: 'Error fetching project' })
         }
         res.send('LUISKITO')
+    },
+    getProjectByUid : async(req,res) => {
+        
+        
+        
+        try {
+            const {uid} = req.params
+            
+            const project = await Projects.find({uid})
+             
+             
+            if(!project)
+                return res.status(404).json({message: 'Project not found'})
+            
+            
+            res.status(200).json(project)
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching project' })
+        }
     }
 
 }
