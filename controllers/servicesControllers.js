@@ -39,7 +39,7 @@ const ServicesControllers = {
     },
     updateService: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.body.id;
             const body = req.body;
             const service = await Services.findByIdAndUpdate(id, body, { new: true });
             if (!service) {
