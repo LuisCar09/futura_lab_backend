@@ -71,7 +71,7 @@ const ServicesControllers = {
             
             
             const service = await Services.find({uid})
-            console.log(service);
+           
             
              
             if(!service)

@@ -85,7 +85,7 @@ const ProjectsControllers = {
     },
     getProjectByTitle: async(req,res) => {
         const projectTitle = req.params.name
-        console.log(projectTitle);
+       
         
         
         try {
