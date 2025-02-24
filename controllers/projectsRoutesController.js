@@ -69,7 +69,8 @@ const ProjectsControllers = {
     },
     deleteProjectById: async(req,res) => {
         const id = req.params.projectId
-    
+        
+        
         try {
             const project = await Projects.findByIdAndDelete(id)
             if(!project) {
@@ -102,9 +103,7 @@ const ProjectsControllers = {
         res.send('LUISKITO')
     },
     getProjectByUid : async(req,res) => {
-        
-        
-        
+
         try {
             const {uid} = req.params
             
