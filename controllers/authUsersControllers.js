@@ -45,6 +45,7 @@ const authUsersControllers = {
     getUserByName: async (req,res) =>{
         try {
             const {username} = req.params 
+            
             const user = await User.find({
                 userName : {$regex:`^${username}` , $options:'i'}
             })      
@@ -54,6 +55,18 @@ const authUsersControllers = {
             console.error(error.message)
         }
     },
+    getUserEmail: async(req,res) => {
+        try {
+            const {email} = req.params
+            
+            
+            const user = await User.findOne({email})
+            res.status(200).json(user)
+        } catch (error) {
+            console.error(error.message)
+        }
+    },
+
     createUser : async (req,res) => {
         try {
             

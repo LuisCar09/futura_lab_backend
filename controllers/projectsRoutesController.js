@@ -2,36 +2,36 @@
 import Projects from "../models/Projects.js"
 const ProjectsControllers = {
 
-    getProjects : async(req,res) => {
+    getProjects: async (req, res) => {
         try {
             const projects = await Projects.find()
             res.status(200).json(projects)
-            
+
         } catch (error) {
             console.error(error)
-            res.status(500).json({message: 'Error fetching projects'})
-            
+            res.status(500).json({ message: 'Error fetching projects' })
+
         }
     },
-    createProject: async(req,res) => {
-    
-        const { nameproject,owner ,description, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image,uid,method} = req.body;
-        
-        
-        
+    createProject: async (req, res) => {
+
+        const { nameproject, owner, description, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, uid, method } = req.body;
+
+
+
         try {
             const newProject = new Projects(
-                { nameproject,owner ,description, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image,uid,method }
+                { nameproject, owner, description, license, references, bibliography, application, ingredients, properties, ambientconditions, lightsconditions, tools, processes, preptime, image, uid, method }
             )
-           
-            
+
+
             const saveProject = await newProject.save()
             res.status(201).json(saveProject)
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Error creating project' })
         }
-    
+
     },
     getProjectById : async(req,res) => {
         
