@@ -60,7 +60,10 @@ const authUsersControllers = {
             const {email} = req.params
             
             
+            
             const user = await User.findOne({email})
+            
+            
             res.status(200).json(user)
         } catch (error) {
             console.error(error.message)
@@ -72,7 +75,10 @@ const authUsersControllers = {
             
             
             const usersDetails = req.body
-            const existUserUid = await User.findOne({uid:usersDetails.uid}) 
+            
+            
+            const existUserUid = await User.findOne({email:usersDetails.email}) 
+            
             if (!existUserUid) {
                 const itHasUserImage = !usersDetails.image ? `https://api.dicebear.com/9.x/initials/svg?seed=${usersDetails.name[0]}` : usersDetails.image 
                 const userData = {...usersDetails,image:itHasUserImage}
